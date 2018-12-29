@@ -4,7 +4,7 @@
 #
 Name     : ntlm-auth
 Version  : 1.2.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/jborean93/ntlm-auth/archive/v1.2.0.tar.gz
 Source0  : https://github.com/jborean93/ntlm-auth/archive/v1.2.0.tar.gz
 Summary  : No detailed summary available
