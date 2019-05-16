@@ -1,0 +1,18 @@
+diff --git a/ntlm_auth/rc4.py b/ntlm_auth/rc4.py
+index 1775fa1..a81462e 100644
+--- a/ntlm_auth/rc4.py
++++ b/ntlm_auth/rc4.py
+@@ -7,7 +7,12 @@ import struct
+ try:
+     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+     from cryptography.hazmat.backends import default_backend
+-    HAS_CRYPTOGRAPHY = True
++    from cryptography.exceptions import UnsupportedAlgorithm
++    try:
++        Cipher(algorithms.ARC4(b"\x01\x02\x03\x04\x05"), mode=None, backend=default_backend()).encryptor()
++        HAS_CRYPTOGRAPHY = True
++    except UnsupportedAlgorithm:
++    	HAS_CRYPTOGRAPHY = False
+ except ImportError:  # pragma: no cover
+     HAS_CRYPTOGRAPHY = False
+ 

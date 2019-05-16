@@ -4,7 +4,7 @@
 #
 Name     : ntlm-auth
 Version  : 1.3.0
-Release  : 4
+Release  : 5
 URL      : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
 Source0  : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
 Summary  : No detailed summary available
@@ -19,6 +19,7 @@ BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : tox
 BuildRequires : virtualenv
+Patch1: skip-rc4-from-cryptography.patch
 
 %description
 ntlm-auth
@@ -53,13 +54,15 @@ python3 components for the ntlm-auth package.
 
 %prep
 %setup -q -n ntlm-auth-1.3.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555371984
+export SOURCE_DATE_EPOCH=1558033457
+export GCC_IGNORE_WERROR=1
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
