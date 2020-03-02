@@ -4,10 +4,10 @@
 #
 Name     : ntlm-auth
 Version  : 1.3.0
-Release  : 9
+Release  : 10
 URL      : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
 Source0  : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
-Summary  : No detailed summary available
+Summary  : Creates NTLM authentication structures
 Group    : Development/Tools
 License  : MIT
 Requires: ntlm-auth-license = %{version}-%{release}
@@ -47,6 +47,7 @@ python components for the ntlm-auth package.
 Summary: python3 components for the ntlm-auth package.
 Group: Default
 Requires: python3-core
+Provides: pypi(ntlm-auth)
 
 %description python3
 python3 components for the ntlm-auth package.
@@ -54,16 +55,21 @@ python3 components for the ntlm-auth package.
 
 %prep
 %setup -q -n ntlm-auth-1.3.0
+cd %{_builddir}/ntlm-auth-1.3.0
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1558033457
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583187527
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -71,7 +77,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ntlm-auth
-cp LICENSE %{buildroot}/usr/share/package-licenses/ntlm-auth/LICENSE
+cp %{_builddir}/ntlm-auth-1.3.0/LICENSE %{buildroot}/usr/share/package-licenses/ntlm-auth/3feb94e218ec9cc73b84cf413325044398ed1ebb
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -82,7 +88,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/ntlm-auth/LICENSE
+/usr/share/package-licenses/ntlm-auth/3feb94e218ec9cc73b84cf413325044398ed1ebb
 
 %files python
 %defattr(-,root,root,-)
