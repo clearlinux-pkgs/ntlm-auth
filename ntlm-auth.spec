@@ -4,7 +4,7 @@
 #
 Name     : ntlm-auth
 Version  : 1.3.0
-Release  : 10
+Release  : 11
 URL      : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
 Source0  : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
 Summary  : Creates NTLM authentication structures
@@ -47,7 +47,7 @@ python components for the ntlm-auth package.
 Summary: python3 components for the ntlm-auth package.
 Group: Default
 Requires: python3-core
-Provides: pypi(ntlm-auth)
+Provides: pypi(ntlm_auth)
 
 %description python3
 python3 components for the ntlm-auth package.
@@ -63,8 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583187527
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583537898
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
