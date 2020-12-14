@@ -4,7 +4,7 @@
 #
 Name     : ntlm-auth
 Version  : 1.3.0
-Release  : 13
+Release  : 14
 URL      : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
 Source0  : https://github.com/jborean93/ntlm-auth/archive/v1.3.0.tar.gz
 Summary  : Creates NTLM authentication structures
