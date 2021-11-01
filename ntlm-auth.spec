@@ -4,7 +4,7 @@
 #
 Name     : ntlm-auth
 Version  : 1.5.0
-Release  : 25
+Release  : 26
 URL      : https://github.com/jborean93/ntlm-auth/archive/v1.5.0/ntlm-auth-1.5.0.tar.gz
 Source0  : https://github.com/jborean93/ntlm-auth/archive/v1.5.0/ntlm-auth-1.5.0.tar.gz
 Summary  : Creates NTLM authentication structures
@@ -63,7 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635777594
+export SOURCE_DATE_EPOCH=1635777782
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
